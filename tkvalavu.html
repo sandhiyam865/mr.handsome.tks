@@ -1,0 +1,347 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For TK 💜</title>
+
+<!-- EmailJS -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<style>
+* { box-sizing:border-box; }
+
+body {
+  margin:0;
+  background:linear-gradient(135deg,#f7f2ff,#e7dafa);
+  font-family:Georgia,serif;
+  color:#7044a5;
+  text-align:center;
+  min-height:100vh;
+  padding:15px;
+  overflow-x:hidden;
+}
+
+.card {
+  background:white;
+  padding:25px 18px;
+  border-radius:23px;
+  max-width:480px;
+  margin:25px auto;
+  box-shadow:0 8px 30px #7044a522;
+  position:relative;
+  z-index:2;
+}
+
+h1 { font-size:27px; }
+h2 { color:#865cb5; }
+
+p { line-height:1.7; }
+
+button {
+  background:#7044a5;
+  color:white;
+  border:none;
+  padding:13px 22px;
+  border-radius:12px;
+  margin:9px;
+  font-size:16px;
+  cursor:pointer;
+}
+
+input {
+  padding:13px;
+  border:1px solid #b99cdd;
+  border-radius:10px;
+  text-align:center;
+  font-size:17px;
+}
+
+.hidden { display:none !important; }
+
+.letter {
+  background:#fbf9ff;
+  border:1px solid #e4d8f3;
+  border-radius:15px;
+  padding:18px;
+  color:#51445f;
+  line-height:1.9;
+  text-align:left;
+}
+
+.memory {
+  background:#f3edff;
+  padding:14px;
+  margin:10px 0;
+  border-radius:13px;
+}
+
+.balloon {
+  position:fixed;
+  font-size:42px;
+  cursor:pointer;
+  z-index:5;
+  border:0;
+  background:none;
+  padding:5px;
+  margin:0;
+  animation:float 3s ease-in-out infinite alternate;
+}
+
+@keyframes float {
+  from { transform:translateY(0) rotate(-8deg); }
+  to { transform:translateY(-25px) rotate(8deg); }
+}
+
+#noBtn {
+  background:#b99cdd;
+  color:white;
+  position:relative;
+  z-index:10;
+}
+
+.small {
+  font-size:13px;
+  color:#9476b7;
+}
+</style>
+</head>
+
+<body>
+<div class="card">
+
+<section id="password">
+<h1>♡ A Little Surprise ♡</h1>
+<h2>Hey TK! 💜</h2>
+<p>I have a little surprise for you...</p>
+<p>Enter your secret code 🔐</p>
+<input id="code" placeholder="Secret code" inputmode="numeric">
+<br>
+<button onclick="unlock()">Unlock your surprise ♡</button>
+<p id="error"></p>
+</section>
+
+<section id="welcome" class="hidden">
+<h1>Welcome TK! 🥹💜</h1>
+<p>Konjam patience-ah iru...</p>
+<p>Unakku oru small surprise vachirukken. Nothing complicated, just something from my heart. 💜</p>
+<button onclick="show('balloons');startBalloons()">Let's Start ✨</button>
+</section>
+
+<section id="balloons" class="hidden">
+<h1>Pop the balloons! 🎈</h1>
+<p>One by one pop pannunga!</p>
+<p id="balloonCount">0 / 8 popped</p>
+<p class="small">Every balloon has a little something I want you to know 💜</p>
+<button id="memoryBtn" class="hidden" onclick="show('memories')">Next Surprise 📸</button>
+</section>
+
+<section id="memories" class="hidden">
+<h1>Our Little Memories 📸</h1>
+<p>Remember these little moments, TK? 💜</p>
+<div class="memory"><h3>Our First Conversation 💬</h3><p>Oru normal conversation-ah start aana namma friendship...</p></div>
+<div class="memory"><h3>Our Silly Fights 😂</h3><p>Chinna chinna fights, teasing and again normal aaguradhu!</p></div>
+<div class="memory"><h3>Endless Talks 🫶</h3><p>Time poRadhe theriyama pesura moments.</p></div>
+<div class="memory"><h3>My Favourite Bond 💜</h3><p>Namma friendship enakku always special.</p></div>
+<button onclick="show('promises')">One More Thing 🌷</button>
+</section>
+
+<section id="promises" class="hidden">
+<h1>Three Little Promises 💜</h1>
+<p>Just a few things from my heart...</p>
+<div class="memory">I promise to always respect your feelings. 🤍</div>
+<div class="memory">I promise never to take our friendship for granted. 🫶</div>
+<div class="memory">I promise to always be honest with you. 💜</div>
+<p>Whatever happens, namma bond ippo irukkura maadhiriye beautiful-ah continue aaganum.</p>
+<button onclick="show('letter')">Open My Letter 💌</button>
+</section>
+
+<section id="letter" class="hidden">
+<h1>A Letter For You 💌</h1>
+<div class="letter">
+<b>Dear TK, 💜</b>
+<p>Enna solla nu honestly enakku theriyala... but idha un kitta sollanum nu romba naala thonuchu.</p>
+<p>unna first pakkum pothu thariyala en life important person avanu. Un kooda pesuradhu, silly things share panradhu, random-ah sirikkiradhu... idhellam enakku romba special.</p>
+<p>Sometimes namma friendship evlo beautiful-ah irukku nu yosippen. Enakku happy-ah irundhaalum, something bother pannalum, un kitta share pannanum nu thonum. Nee en life-la irukkuradhe oru special feeling.</p>
+<p>Eppo friendship konjam different feeling-ah maaruchu nu enakku theriyala. But one thing mattum sure... I started seeing you as someone more special than just my best friend.</p>
+<p>I don't want to lose the friendship we already have. Adhe time-la, en feelings-ah un kitta hide pannavum virumbala.</p>
+<p>I don't expect everything to be perfect. I just want us to keep understanding each other, supporting each other and making beautiful memories together.</p>
+<p>And TK, un answer NO-va irundhaalum enakku okay dhaan. Namma friends-ah irukka mudiyum-na adhuvum enakku happy.</p>
+<p>Namma friendship endha reason-naalum break aaga koodathu. Whatever happens, namma ippo eppadi irukkomo, adhe maadhiri freely pesittu, silly things pannittu friends-ah continue aaganum.</p>
+<p>En feelings un kitta sollanum nu thonuchu, adhaan sonnen. No pressure, no expectations. Just wanted you to know. ❤️</p>
+<p>Namma friendship endha reason-naalum break aaga koodathu.</p>
+<p>So, my best friend... Enakku unna romba pudikkum. 💜</p>
+<b>With lots of love,<br>Your Valavu ♡</b>
+</div>
+<button onclick="show('final')">One Final Question... 💍</button>
+</section>
+
+<section id="final" class="hidden">
+<h1>Rowdy 💜</h1>
+<h2>WILL YOU BE MINE ?</h2>
+<h2>Friend to Girlfriend (future wife) ♡</h2>
+<p>From being my best friend to becoming someone even more special... what do you say? 🥹</p>
+
+<button id="yesBtn" onclick="sendYesEmail()">YES! 💜</button>
+<button id="noBtn" onpointerenter="moveNo()" ontouchstart="moveNo()" onclick="moveNo()">NO 🙈</button>
+
+<p id="emailStatus" class="small"></p>
+<p class="small">Whatever your answer, our friendship will always matter to me. 💜</p>
+</section>
+
+<section id="yes" class="hidden">
+<h1>YOU SAID YES! 🥹💜</h1>
+<h2>Best Friends to Forever!</h2>
+<p>Suriya &amp; Sandhiya 🙈</p>
+<p>Here's to a beautiful new chapter together! ♡</p>
+</section>
+
+</div>
+
+<script>
+
+// SCREEN NAVIGATION
+function show(id) {
+  document.querySelectorAll("section").forEach(s => {
+    s.classList.add("hidden");
+  });
+  document.getElementById(id).classList.remove("hidden");
+}
+
+// PASSWORD
+function unlock() {
+  let code = document.getElementById("code").value;
+  if(code === "122385") {
+    show("welcome");
+  } else {
+    document.getElementById("error").innerText = "Wrong code! Try again 💜";
+  }
+}
+
+// BALLOONS
+let words = [
+"My favourite person 💜",
+"My comfort zone 🫶",
+"My partner in crime ✨",
+"My sweetest best friend 🌷",
+"My happy place ☁️",
+"My biggest smile 💗",
+"My special one 🥹",
+"My Tom 😻"
+];
+
+let count = 0;
+let balloonStarted = false;
+
+function startBalloons() {
+  if(balloonStarted) return;
+  balloonStarted = true;
+  createBalloon();
+}
+
+function createBalloon() {
+  if(count >= 8) return;
+
+  let balloon = document.createElement("button");
+  balloon.innerHTML = "🎈";
+  balloon.className = "balloon";
+  balloon.style.left = (5 + Math.random() * 80) + "vw";
+  balloon.style.top = (12 + Math.random() * 70) + "vh";
+
+  balloon.onclick = function() {
+    if(count >= 8) return;
+    balloon.remove();
+
+    let message = document.createElement("div");
+    message.innerText = "💜 " + words[count];
+    message.style.position = "fixed";
+    message.style.top = "50%";
+    message.style.left = "50%";
+    message.style.transform = "translate(-50%,-50%)";
+    message.style.background = "white";
+    message.style.padding = "18px";
+    message.style.borderRadius = "15px";
+    message.style.zIndex = "20";
+    message.style.boxShadow = "0 5px 25px #7044a555";
+    document.body.appendChild(message);
+
+    setTimeout(() => message.remove(),1800);
+    count++;
+
+    document.getElementById("balloonCount").innerText = count + " / 8 popped 💜";
+    setTimeout(createBalloon,300);
+
+    if(count === 8) {
+      document.getElementById("memoryBtn").classList.remove("hidden");
+    }
+  };
+
+  document.body.appendChild(balloon);
+}
+
+// NO BUTTON
+function moveNo() {
+  let btn = document.getElementById("noBtn");
+  btn.style.position = "fixed";
+  let maxX = window.innerWidth - btn.offsetWidth - 15;
+  let maxY = window.innerHeight - btn.offsetHeight - 15;
+  let x = 15 + Math.random() * Math.max(0,maxX-15);
+  let y = 15 + Math.random() * Math.max(0,maxY-15);
+  btn.style.left = x + "px";
+  btn.style.top = y + "px";
+}
+
+// EMAILJS CONFIGURATION
+const EMAILJS_PUBLIC_KEY = "vRlGbegARNN-rYudV";
+const EMAILJS_SERVICE_ID = "service_h0ke1s9";
+const EMAILJS_TEMPLATE_ID = "template_8nt7ufh";
+const YOUR_EMAIL = "sandhiyam865@gmail.com";
+
+emailjs.init({
+  publicKey: EMAILJS_PUBLIC_KEY
+});
+
+// YES BUTTON EMAIL
+async function sendYesEmail() {
+  const status = document.getElementById("emailStatus");
+  const btn = document.getElementById("yesBtn");
+
+  btn.disabled = true;
+  status.innerText = "Sending your special reply... 💜";
+
+  const params = {
+    to_email: YOUR_EMAIL,
+    subject: "Okay dii Valavu! 🥹❤️ — By Suriya 💌",
+    message: `Okay dii Valavu! 🥹❤️
+— By Suriya 💌
+
+Enna dii Valavu… ivlo naala friendship-nu irundha namma bond, ippo innum konjam special-ah maariduchu pola! 😅💜
+
+Un kooda pesuradhu, sanda poduradhu, kalaaikkuradhu ellame enakku romba special dii.
+
+Unna en life-la irundhu miss panna virumbala. Namma rendu perum happy-ah, understanding-oda indha new journey start pannalaam.
+
+Seri dii, ippo happy-ah iru… un YES enakku romba special! 🥹❤️
+
+Your Suriya ❤️
+A new chapter, same beautiful bond. ✨`
+  };
+
+  try {
+    await emailjs.send(
+      EMAILJS_SERVICE_ID,
+      EMAILJS_TEMPLATE_ID,
+      params
+    );
+
+    show("yes");
+  } catch(error) {
+    console.error(error);
+    status.innerText = "Email send aagala. Please try again! 💜";
+    btn.disabled = false;
+  }
+}
+</script>
+</body>
+</html>
